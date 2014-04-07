@@ -15,7 +15,7 @@ Puppet::Type.newtype :vagrant_box do
     isnamevar
   end
 
-  newparam :provider do
+  newparam :box_provider do
     desc "The provider for the box"
   end
 
@@ -36,7 +36,7 @@ Puppet::Type.newtype :vagrant_box do
 
   autorequire :vagrant_plugin do
     Array.new.tap do |a|
-      case vprovider = self[:name].partition('/').last
+      case vprovider = self[:box_provider]
       when 'virtualbox'
         # built in
       when 'vmware_fusion'
