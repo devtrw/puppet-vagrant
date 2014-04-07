@@ -9,6 +9,7 @@
 define vagrant::box(
   $source,
   $ensure = 'present',
+  $provider = 'virtualbox'
 ) {
   require vagrant
   include boxen::config
@@ -16,5 +17,6 @@ define vagrant::box(
   vagrant_box { $name:
     ensure   => $ensure,
     source   => $source,
+    provider => $provider
   }
 }
