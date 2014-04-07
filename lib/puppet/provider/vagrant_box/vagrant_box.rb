@@ -4,16 +4,14 @@ Puppet::Type.type(:vagrant_box).provide :vagrant_box do
   include Puppet::Util::Execution
 
   def create
-    name, vprovider = @resource[:name].split('/')
+    name = @resource[:name]
 
     cmd = [
       "/usr/bin/vagrant",
       "box",
       "add",
       name,
-      @resource[:source],
-      "--provider",
-      vprovider
+      @resource[:source]
     ]
 
     cmd << "--force" if @resource[:force]
@@ -22,7 +20,7 @@ Puppet::Type.type(:vagrant_box).provide :vagrant_box do
   end
 
   def destroy
-    name, vprovider = @resource[:name].split('/')
+    name = @resource[:name]
 
     cmd = [
       "/usr/bin/vagrant",
