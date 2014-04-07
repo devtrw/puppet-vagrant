@@ -16,7 +16,7 @@ Puppet::Type.type(:vagrant_box).provide :vagrant_box do
 
     cmd << "--force" if @resource[:force]
 
-    execute cmd, opts
+    execute(cmd, opts) unless exists?
   end
 
   def destroy
@@ -36,10 +36,10 @@ Puppet::Type.type(:vagrant_box).provide :vagrant_box do
     if @resource[:force]
       false
     else
-      name, vprovider = @resource[:name].split('/')
+      dir_name = @resource[:name].split('/').join('-VAGRANTSLASH-')
 
       File.directory? \
-        "/Users/#{Facter[:boxen_user].value}/.vagrant.d/boxes/#{name}/#{vprovider}"
+        "/Users/#{Facter[:boxen_user].value}/.vagrant.d/boxes/#{dir_name}"
     end
   end
 
