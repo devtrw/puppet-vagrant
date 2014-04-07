@@ -15,6 +15,9 @@ Puppet::Type.newtype :vagrant_box do
     isnamevar
   end
 
+  newparam :provider do
+  end
+
   newparam :source do
   end
 
