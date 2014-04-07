@@ -16,6 +16,7 @@ Puppet::Type.newtype :vagrant_box do
   end
 
   newparam :provider do
+    desc "The provider for the box"
   end
 
   newparam :source do
