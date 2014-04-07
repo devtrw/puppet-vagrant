@@ -14,9 +14,9 @@ Puppet::Type.type(:vagrant_box).provide :vagrant_box do
       @resource[:source]
     ]
 
-    if @resource[:box_provider]
+    if @resource[:vmprovider]
       cmd << "--provider"
-      cmd << "#{@resource[:box_provider]}"
+      cmd << "#{@resource[:vmprovider]}"
     end
 
     cmd << "--force" if @resource[:force]
@@ -34,9 +34,9 @@ Puppet::Type.type(:vagrant_box).provide :vagrant_box do
       name,
     ]
 
-    if @resource[:box_provider]
+    if @resource[:vmprovider]
       cmd << "--provider"
-      cmd << "#{@resource[:box_provider]}"
+      cmd << "#{@resource[:vmprovider]}"
     end
 
     execute cmd, opts
