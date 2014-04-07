@@ -10,6 +10,7 @@ define vagrant::plugin(
   $ensure  = 'present',
   $force   = false,
   $license = undef,
+  $version = undef
 ) {
   require vagrant
   include boxen::config
@@ -30,6 +31,7 @@ define vagrant::plugin(
   }
 
   vagrant_plugin { $plugin_name:
-    ensure => $ensure
+    ensure  => $ensure,
+    version => $version
   }
 }

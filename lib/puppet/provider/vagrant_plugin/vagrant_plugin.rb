@@ -30,6 +30,10 @@ Puppet::Type.type(:vagrant_plugin).provide :vagrant_plugin do
       "install",
       @resource[:name]
     ]
+    if @resource[:version]
+      cmd << '--plugin-version'
+      cmd << @resource[:version]
+    end
 
     execute cmd, opts
   end
