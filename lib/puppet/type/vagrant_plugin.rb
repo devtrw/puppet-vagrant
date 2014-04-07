@@ -24,7 +24,7 @@ Puppet::Type.newtype(:vagrant_plugin) do
     end
   end
 
-  newparm :version do
+  newparam :version do
   end
 
   autorequire :package do
